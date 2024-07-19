@@ -1,0 +1,5 @@
+#!/bin/bash
+
+module load anaconda
+source activate py39
+python imputation-0305.py -o 0
