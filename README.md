@@ -1,4 +1,3 @@
-
 Estimation of Over-parameterized Models from an Auto-Modeling (AM) Perspective
 ===============================================================
 From a model-building perspective, we propose a paradigm shift for fitting over-parameterized models. Philosophically, the mindset is to fit models to future observations rather than to the observed sample. Technically, given an imputation method to generate future observations, we fit over-parameterized models to these future observations by optimizing an approximation of the desired expected loss function based on its sample counterpart and an adaptive *duality function*. The required imputation method is also developed using the same estimation technique with an adaptive $m$-out-of-$n$ bootstrap approach.
@@ -20,7 +19,7 @@ Yiran Jiang and Chuanhai Liu, [Estimation of Over-parameterized Models from an A
 
 Required package:  
 
-deconvolveR (>= 1.2-1), quadprog (>=1.5-8)
+deconvolveR (>=1.2-1), quadprog (>=1.5-8)
 
 Run Simulation Experiments:
 ```{R}
@@ -36,6 +35,10 @@ Rscript summary.R
 ```
 
 #### $n < p$ Linear Regression:
+
+Required package:  
+
+glmnet (>=4.1-8), lars (>=1.3), natural (>=0.9.0), LaplacesDemon (>=16.1.6), MASS (>=7.3-60)
 
 Generate Data:
 ```{R}
@@ -57,6 +60,10 @@ sbatch myjob-array.sh
 ```
 
 #### MNIST Image Classification with Neural Networks
+
+Required Packages:
+
+torch (>=1.12.1), torchvision (>=0.13.1), numpy (>=1.21.5), scipy (>=1.9.1), argparse, random, pickle, math
 
 ```{python}
 cd neural-network
