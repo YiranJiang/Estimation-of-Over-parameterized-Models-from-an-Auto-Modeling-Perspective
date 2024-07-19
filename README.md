@@ -57,9 +57,10 @@ Run Simulation Experiments:
 ```{R}
 Rscript linear_regression.R $alpha $k $tau 
 ```
-$alpha: Sparsity-related parameter $\alpha \in \{0.3,0.6,0.9\}$
-$k: Index of the dataset (1-100)
-$tau: SNR-related parameter $\tau \in \{0.3,1,3\}$ 
+
+ - alpha: Sparsity-related parameter $\alpha \in \{0.3,0.6,0.9\}$
+ - k: Index of the dataset (1-100)
+ - tau: SNR-related parameter $\tau \in \{0.3,1,3\}$ 
 
 Alternative -- SLURM Job Script (modify the file if required):
 ```{sh}
@@ -84,14 +85,15 @@ AM:
 python am_imputation.py -o 0
 python am_estimation.py -o 0
 ```
--o 0: FC 400-400, L1
--o 1: FC 400-400, L2
--o 2: FC 800-800, L1
--o 3: FC 800-800, L2
--o 4: FC 1600-1600, L1
--o 5: FC 1600-1600, L2
--o 6: CNN, L1
--o 7: CNN, L2
+
+ - -o 0: FC 400-400, L1
+ - -o 1: FC 400-400, L2
+ - -o 2: FC 800-800, L1
+ - -o 3: FC 800-800, L2
+ - -o 4: FC 1600-1600, L1
+ - -o 5: FC 1600-1600, L2
+ - -o 6: CNN, L1
+ - -o 7: CNN, L2
 
 
 Standard Regularization:
@@ -100,23 +102,24 @@ Standard Regularization:
 python penalty_estimation.py -o 0
 ```
 
--o 0: FC 400-400, L1
--o 1: FC 400-400, L2
--o 2: FC 800-800, L1
--o 3: FC 800-800, L2
--o 4: FC 1600-1600, L1
--o 5: FC 1600-1600, L2
--o 6: CNN, L1
--o 7: CNN, L2
+ - -o 0: FC 400-400, L1
+ - -o 1: FC 400-400, L2
+ - -o 2: FC 800-800, L1
+ - -o 3: FC 800-800, L2
+ - -o 4: FC 1600-1600, L1
+ - -o 5: FC 1600-1600, L2
+ - -o 6: CNN, L1
+ - -o 7: CNN, L2
 
 Dropout:
 ```{python}
 python penalty_estimation.py -o 0
 ```
--o 0: FC 400-400
--o 1: FC 800-800
--o 2: FC 1600-1600
--o 3: CNN
+ - -o 0: FC 400-400
+ - -o 1: FC 800-800
+ - -o 2: FC 1600-1600
+ - -o 3: CNN
+
 
 
 Early-Stopping:
