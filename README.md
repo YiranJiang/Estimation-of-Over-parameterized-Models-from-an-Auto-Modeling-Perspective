@@ -1,3 +1,4 @@
+
 Estimation of Over-parameterized Models from an Auto-Modeling (AM) Perspective
 ===============================================================
 From a model-building perspective, we propose a paradigm shift for fitting over-parameterized models. Philosophically, the mindset is to fit models to future observations rather than to the observed sample. Technically, given an imputation method to generate future observations, we fit over-parameterized models to these future observations by optimizing an approximation of the desired expected loss function based on its sample counterpart and an adaptive *duality function*. The required imputation method is also developed using the same estimation technique with an adaptive $m\text{-out-of-}n$ bootstrap approach.
@@ -6,6 +7,7 @@ From a model-building perspective, we propose a paradigm shift for fitting over-
 
 Yiran Jiang and Chuanhai Liu, [Estimation of Over-parameterized Models from an Auto-Modeling Perspective.](https://arxiv.org/pdf/2206.01824) *Major Revision at JASA*.
 
+<br>
 
 ### Reproduce Experimental Results in the Paper:
  
@@ -14,6 +16,8 @@ Yiran Jiang and Chuanhai Liu, [Estimation of Over-parameterized Models from an A
 1. Estimation of many-normal-means (R script)
 2. $n < p$ Linear regression (R script)
 3. MNIST image classification with neural networks (Python script)
+
+<br>
 
 #### Estimation of Many-Normal-Means:
 
@@ -33,6 +37,9 @@ Summary:
 ```{R}
 Rscript summary.R
 ```
+
+<br>
+
 
 #### $n < p$ Linear Regression:
 
@@ -58,6 +65,9 @@ Alternative -- SLURM Job Script (modify the file if required):
 ```{sh}
 sbatch myjob-array.sh
 ```
+
+<br>
+
 
 #### MNIST Image Classification with Neural Networks
 
