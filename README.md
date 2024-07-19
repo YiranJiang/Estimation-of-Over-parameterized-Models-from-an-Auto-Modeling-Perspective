@@ -58,9 +58,9 @@ Run Simulation Experiments:
 Rscript linear_regression.R $alpha $k $tau 
 ```
 
- - alpha: Sparsity-related parameter $\alpha \in {0.3,0.6,0.9}$
+ - alpha: Sparsity-related parameter $`\alpha \in \{0.3,0.6,0.9\}`$
  - k: Index of the dataset (1-100)
- - tau: SNR-related parameter $\tau \in {0.3,1,3}$ 
+ - tau: SNR-related parameter $`\tau \in \{0.3,1,3\}`$ 
 
 Alternative -- SLURM Job Script (modify the file if required):
 ```{sh}
