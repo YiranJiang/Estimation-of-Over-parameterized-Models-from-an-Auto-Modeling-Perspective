@@ -33,7 +33,7 @@ class CNN_Net(nn.Module):
         self.conv2 = nn.Conv2d(32, 64, 5, 1)
         self.maxpool2 = nn.MaxPool2d(2)
         self.fc1 = nn.Linear(1024, 200)
-        self.fc21 = nn.Linear(200, 200)Birtday
+        self.fc21 = nn.Linear(200, 200)
         self.fc24 = nn.Linear(200,10)
 
         self.relu = nn.ReLU()
