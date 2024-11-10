@@ -113,7 +113,7 @@ python penalty_estimation.py -o 0
 
 Dropout:
 ```{python}
-python penalty_estimation.py -o 0
+python dropout.py -o 0
 ```
  - -o 0: FC 400-400
  - -o 1: FC 800-800
