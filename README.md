@@ -166,7 +166,7 @@ Modify the file `mnm-simulation.R` in the `many-normal-means` directory by adjus
 
 Replace the files in the `many-normal-means` directory with the files found in `many-normal-means/alternative-3` and follow the procedures outlined in `README.txt`.
 
-- (4) 
+- (4) Alternative implementation of AM:
 
 Replace the files in the `many-normal-means` directory with the files found in `many-normal-means/alternative-4` and follow the procedures outlined in `README.txt`.
 
