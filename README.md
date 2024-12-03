@@ -133,6 +133,8 @@ Early-Stopping:
 python early_stopping_estimation.py
 ```
 
+The results obtained from each method can then be aggregated and compiled to form the final table as presented in the manuscript.
+
 <br>
 
 
