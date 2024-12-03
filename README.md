@@ -14,7 +14,7 @@ Yiran Jiang and Chuanhai Liu, [Estimation of Over-parameterized Models from an A
  The paper contains three application studies:
 
 1. Estimation of many-normal-means (R script, Table 1)
-2. $n < p$ Linear regression (R script, Table 2,3)
+2. $n < p$ Linear regression (R script, Table 2 and 3)
 3. MNIST image classification with neural networks (Python script, Table 4)
 
 <br>
@@ -169,6 +169,8 @@ Replace the files in the `many-normal-means` directory with the files found in `
 - (4) Alternative implementation of AM:
 
 Replace the files in the `many-normal-means` directory with the files found in `many-normal-means/alternative-4` and follow the procedures outlined in `README.txt`.
+
+<br>
 
 ## References
 
