@@ -1,5 +1,6 @@
 library("deconvolveR") ## g-modeling
 require(quadprog)
+library(dirichletprocess)
 
 mysoftmax <- function(xs){
   this.sum <- sum(exp(xs))
@@ -485,9 +486,10 @@ eva_AM <- function(result,ys,mus){
   return(sum(risk))
 }
 
-eva_gmodeling <- function(ys,mus, m){
+
+eva_gmodeling <- function(ys,mus, by = 0.1){
   mus_hat <- rep(NA,length(ys))
-  tau <- c(seq(from = min(ys), to = max(ys), by = 0.1),0)
+  tau <- c(seq(from = min(ys), to = max(ys), by = by),0)
   result <- deconv(tau = tau, X = ys, family = "Normal")
   g <- result$stats[, "g"]
   
@@ -497,5 +499,123 @@ eva_gmodeling <- function(ys,mus, m){
     mus_hat[i] <- sum(this.prob*tau)
   }
   return(sum((mus_hat - mus)**2))
+}
+
+
+
+
+eva_dpmm <- function(ys,mus, seed = 123){
+  set.seed(seed)
+  mus_hat <- rep(NA,length(ys))
+  
+  
+  dpobj <- DirichletProcessGaussianFixedVariance(ys, 1)
+  dpobj <- Fit(dpobj, 1000)
+  
+  newData <- ys
+  
+  if (!is.matrix(newData))
+    newData <- matrix(newData, ncol = 1)
+  
+  mus_hat <- rep(NA,length(newData))
+  
+  alpha <- dpobj$alpha
+  cluster.means <- dpobj$clusterParameters[[1]][,,]
+  
+  
+  clusterParams <- dpobj$clusterParameters
+  numLabels <- dpobj$numberClusters
+  mdobj <- dpobj$mixingDistribution
+  
+  pointsPerCluster <- dpobj$pointsPerCluster
+  
+  Predictive_newData <- Predictive(mdobj, newData)
+
+  componentIndexes <- numeric(nrow(newData))
+  
+  for (i in seq_len(nrow(newData))) {
+    
+    dataVal <- newData[i, , drop = FALSE]
+
+    weights <- pointsPerCluster * Likelihood(mdobj, dataVal, clusterParams)
+    this.prob <- weights/sum(weights)
+    
+    mus_hat[i] <- sum(cluster.means*this.prob)
+    
+  }
+  
+  
+  return(list(sum((mus_hat - mus)**2), dpobj))
+}
+
+
+eva_MJS <- function(ys, mus, dpobj, M = 1000, seed = 123){
+  set.seed(seed)
+  newData <- ys
+  
+  if (!is.matrix(newData))
+    newData <- matrix(newData, ncol = 1)
+  
+  
+  alpha <- dpobj$alpha
+  cluster.means <- dpobj$clusterParameters[[1]][,,]
+  C <- length(cluster.means)
+  
+  clusterParams <- dpobj$clusterParameters
+  numLabels <- dpobj$numberClusters
+  mdobj <- dpobj$mixingDistribution
+  
+  pointsPerCluster <- dpobj$pointsPerCluster
+  
+  Predictive_newData <- Predictive(mdobj, newData)
+
+  
+  prob.matrix <- matrix(0, nrow = n, ncol = numLabels)
+  for (i in seq_len(nrow(newData))) {
+    
+    dataVal <- newData[i, , drop = FALSE]
+
+    weights <- pointsPerCluster * Likelihood(mdobj, dataVal, clusterParams)
+    this.prob <- weights/sum(weights)
+    prob.matrix[i,] <- this.prob
+
+    
+  }
+  
+  log.prob.matrix <- log(prob.matrix)
+  
+  nus <- matrix(0, nrow = n, ncol = M)
+  ws <- rep(0, M)
+  
+  for (m in 1:M){
+    for (i in 1:n){
+      
+      this.index <- sample(1:numLabels, 1, prob = prob.matrix[i,])
+      
+      nus[i,m] <- cluster.means[this.index]
+      
+      ws[m] <- ws[m] + log.prob.matrix[i,this.index]
+      
+    }
+  }
+  
+  ws <- exp(ws - max(ws))  # Subtract max for stability
+  ws <- ws / sum(ws)
+  
+  rhos <- rep(0, ncol(nus))
+  js_mat <- matrix(NA, nrow = ncol(nus), ncol = n)
+  for (i in 1:ncol(nus)){
+    rhos[i] <- ws[i]*(sqrt(sum((ys - nus[,i])**2))**(-(n-2)))
+    js_mat[i,] <- ys - (n - 2)*(ys - nus[,i])/(sum((ys - nus[,i])**2))
+  }
+  
+  rhos <- rhos/sum(rhos)
+  mult_js <- rep(0, n)
+  
+  for (i in 1:ncol(nus)){
+    mult_js <- mult_js + js_mat[i,]*rhos[i]  
+  }
+
+  return(sum((mult_js - mus)**2))
 }
 

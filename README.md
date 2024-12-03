@@ -9,7 +9,7 @@ Yiran Jiang and Chuanhai Liu, [Estimation of Over-parameterized Models from an A
 
 <br>
 
-### Reproduce Experimental Results in the Paper:
+### Reproduce Main Experimental Results in the Paper:
  
  The paper contains three application studies:
 
@@ -23,14 +23,20 @@ Yiran Jiang and Chuanhai Liu, [Estimation of Over-parameterized Models from an A
 
 Required package:  
 
-deconvolveR (>=1.2-1), quadprog (>=1.5-8)
+deconvolveR (>=1.2-1), quadprog (>=1.5-8), dirichletprocess (>= 0.4.2)
 
 Run Simulation Experiments:
+
 ```{R}
-cd many-normal-means
-Rscript mnm-simulations.R 1  ## Simulation Setting 1
-Rscript mnm-simulations.R 2  ## Simulation Setting 2
-Rscript mnm-simulations.R 3  ## Simulation Setting 3
+Rscript mnm-simulation.R $a $b
+```
+
+ - a: Index of the experiment (1-3)
+ - b: Index of the repetitions (1-50), each containing 10 datasets
+
+Alternative -- SLURM Job Script (modify the file if required):
+```{sh}
+sbatch myjob-array.sh
 ```
 
 Summary:
@@ -127,9 +133,17 @@ Early-Stopping:
 python early_stopping_estimation.py
 ```
 
+
+
+### Reproduce Additional Experiments in the Paper
+
+
+
 ## References
 
 Friedman, Jerome, Hastie, Trevor, and Tibshirani, Rob. "Regularization Paths for Generalized Linear Models via Coordinate Descent." *Journal of Statistical Software*, 33.1 (2010): 1-22.
+
+Miller, Brandon J., and Walker, Stephen G. "DirichletProcess: An R Package for Bayesian Nonparametric Modeling." *CRAN Vignettes*. URL: [https://cran.r-project.org/web/packages/dirichletprocess/vignettes/dirichletprocess.pdf](https://cran.r-project.org/web/packages/dirichletprocess/vignettes/dirichletprocess.pdf).
 
 Narasimhan, Balasubramanian, and Efron, Bradley. "deconvolveR: A $g-$Modeling Program for Deconvolution and Empirical Bayes Estimation." *Journal of Statistical Software*, 94.11 (2020).
 
