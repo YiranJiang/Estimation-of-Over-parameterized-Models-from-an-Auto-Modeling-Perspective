@@ -13,9 +13,9 @@ Yiran Jiang and Chuanhai Liu, [Estimation of Over-parameterized Models from an A
  
  The paper contains three application studies:
 
-1. Estimation of many-normal-means (R script)
-2. $n < p$ Linear regression (R script)
-3. MNIST image classification with neural networks (Python script)
+1. Estimation of many-normal-means (R script, Table 1)
+2. $n < p$ Linear regression (R script, Table 2,3)
+3. MNIST image classification with neural networks (Python script, Table 4)
 
 <br>
 
@@ -133,15 +133,32 @@ Early-Stopping:
 python early_stopping_estimation.py
 ```
 
+<br>
 
 
-### Reproduce Additional Experiments in the Paper
+### Reproduce Additional Results in the Paper
 
+The additional experiments demonstrated in the Supplementary Material of the paper contains:
+
+1. Tree Example (Jupyter Notebook, Supplementary S.13)
+2. Many-normal-means example variations: (1) Multiple-Shrinkage JS without prior information; (2) $g$-modeling with varying grid density; (3) Expanded simulation settings; (4) Alternative implementation of AM (R script, Supplementary S.10 and S.14)
+
+
+The tree example code can be obtained from the Jupternote notebook in the folder named `tree-model`, and the reproduction is a ease. 
+
+The reproduction of 2 can be done with the provided additional codes, or slight modification of existing codes:
+
+-(1) Directly run the file `mnm-additional-1.R` in `many-normal-means/alternative-1`. The computation is fast.
+-(2) The file `mnm-simulation.R` in the directory `many-normal-means` can be slightly modified, by varying the third argument in the function `eva_gmodeling()`. Comment out the part for other methods for faster computation.
+-(3) Replace the files in the directory `many-normal-means` with the files in `many-normal-means/alternative-3`, and repeat the procedure in `README.txt`
+-(4) Replace the files in the directory `many-normal-means` with the files in `many-normal-means/alternative-4`, and repeat the procedure in `README.txt`
 
 
 ## References
 
 Friedman, Jerome, Hastie, Trevor, and Tibshirani, Rob. "Regularization Paths for Generalized Linear Models via Coordinate Descent." *Journal of Statistical Software*, 33.1 (2010): 1-22.
+
+LeCun, Yann, Bottou, Léon, Bengio, Yoshua, and Haffner, Patrick. "Gradient-Based Learning Applied to Document Recognition." *Proceedings of the IEEE*, 86.11 (1998): 2278-2324.
 
 Miller, Brandon J., and Walker, Stephen G. "DirichletProcess: An R Package for Bayesian Nonparametric Modeling." *CRAN Vignettes*. URL: [https://cran.r-project.org/web/packages/dirichletprocess/vignettes/dirichletprocess.pdf](https://cran.r-project.org/web/packages/dirichletprocess/vignettes/dirichletprocess.pdf).
 
@@ -149,5 +166,4 @@ Narasimhan, Balasubramanian, and Efron, Bradley. "deconvolveR: A $g-$Modeling Pr
 
 Paszke, Adam, Gross, Sam, Massa, Francisco, Lerer, Adam, Bradbury, James, Chanan, Gregory, Killeen, Trevor, Lin, Zeming, Gimelshein, Natalia, Antiga, Luca, Desmaison, Alban, Köpf, Andreas, Yang, Edward, DeVito, Zach, Raison, Martin, Tejani, Alykhan, Chilamkurthy, Sasank, Steiner, Benoit, Lu, Fang, Bai, Junjie, and Chintala, Soumith. "PyTorch: An Imperative Style, High-Performance Deep Learning Library." *Cornell University Library, arXiv.org* (2019).
 
-LeCun, Yann, Bottou, Léon, Bengio, Yoshua, and Haffner, Patrick. "Gradient-Based Learning Applied to Document Recognition." *Proceedings of the IEEE*, 86.11 (1998): 2278-2324.
 
