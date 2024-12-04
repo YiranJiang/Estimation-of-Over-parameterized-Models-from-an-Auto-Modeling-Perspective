@@ -138,7 +138,7 @@ The results obtained from each method can then be aggregated and compiled to for
 <br>
 
 
-### Reproduce Additional Results in the Paper
+### Reproduce Additional Results in the Paper:
 
 The additional experiments demonstrated in the Supplementary Material of the paper contains:
 
