@@ -5,7 +5,7 @@ From a model-building perspective, we propose a paradigm shift for fitting over-
 
 ## Related Publication
 
-Yiran Jiang and Chuanhai Liu, [Estimation of Over-parameterized Models from an Auto-Modeling Perspective.](https://arxiv.org/pdf/2206.01824) *Major revision at Journal of the American Statistical Association*.
+Yiran Jiang and Chuanhai Liu, [Estimation of Over-parameterized Models from an Auto-Modeling Perspective.](https://www.tandfonline.com/doi/pdf/10.1080/01621459.2025.2455192) *Journal of the American Statistical Association* (2025).
 
 <br>
 
